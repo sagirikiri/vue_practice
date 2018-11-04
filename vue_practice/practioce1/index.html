@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Vue.js App</title>
+  <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+  <div id="app">
+    <p>{{ message }}</p>
+    <ol>
+      <li v-for="item in list">{{ item }}</li>
+    </ol>
+    <button v-on:click="handleClick">Click</button>
+    <input v-model="message">
+    <p v-if="show">こんにちは！</p>
+    名前<input v-model="name">
+    <button v-on:click="doAdd">モンスターを追加</button>
+    <ul>
+      <li v-for="(creature, index) in creatures" v-bind:key="creature.id"
+      v-if="creature.hp">
+      ID. {{creature.id}} Name. {{creature.name}} HP. {{creature.hp}}
+        <span v-if="creature.hp < 50">瀕死！</span>
+         <button v-on:click="doAttack(index)">攻撃</button>
+         <button v-on:click="doRemove">削除</button></li>
+    </ul>
+    <img src="macchanrio.png" v-on:load="show=true" v-bind:class="{hide: !show}">
+<!-- 右クリックを不能にする -->
+    <div v-on:click.right.prevent="handler">右クリックが不能のはず...!!</div>
+    <input v-model="text">
+    <p>{{ text }}</p>
+    <p>{{ width }} の半分は{{ halfWidth }}</p>
+  </div>
+  <div id="chap4">
+    <input v-model.number="budget">円以下に絞り込む
+    <input v-model.number="limit">件表示
+    <p>{{ matched.length }}件中{{ limited.length }}件</p>
+    <ul>
+      <li v-for="item in limited" v-bind:key="item.id"> 
+        {{item.name}} {{item.price}}円
+      </li>
+    </ul>
+    <button v-on:click="order!=order">切り替え</button>
+  </div>
+  <div id="watcher">
+    
+  </div>
+  <script type="text/javascript" src="../global/vue.js"></script>
+  <script type="text/javascript" src="../global/lodash.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+</body>
+</html>

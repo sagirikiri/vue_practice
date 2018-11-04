@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GitHubからレポジトリを取得する</title>
+</head>
+<body>
+  <div id="app">
+    <select v-model="current">
+      <option v-for="topic in topics" v-bind:value="topic.value"> 
+        {{ topic.name }}
+      </option>
+    </select>
+    <div v-for="item in list"> {{item.full_name}}</div>
+  </div>
+
+  <div id="filter">
+     <p>{{price | localeNum}}</p>
+     <p>{{ message | filter(foo,100) }}</p>
+     <!-- カスタムディレクティブ、valueの値がトリガとなる 
+          v-focusはカスタムディレクティブで、directivesの中で定義される-->
+      <input v-focus>
+      <button v-on:click="video1=true">再生</button>
+      <button v-on:click="video1=false">停止</button>
+      <video src="hosokawa_message.mp4" v-video="video1" />
+  </div>
+</body>
+  <script type="text/javascript" src="../global/vue.js"></script>
+  <script type="text/javascript" src="../global/lodash.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+</html>
